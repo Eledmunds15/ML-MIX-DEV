@@ -1,3 +1,19 @@
+# Build command
+# docker build -t lammps-ml-mix:latest .
+
+# Build command for debug (with log file)
+# docker build -t lammps-ml-mix:latest . > build.log 2>&1
+
+# Build command for debug (removing cache and log file)
+# docker build --no-cache -t lammps-ml-mix:latest . > build.log 2>&1
+
+# Run command
+# docker run --rm -it --gpus all lammps-ml-mix:latest
+
+# -----
+# 1: Build Stage
+# -----
+
 FROM nvidia/cuda:12.5.1-devel-ubuntu24.04 AS builder
 
 # Set environment variables for non-interactive installs.
@@ -69,15 +85,3 @@ RUN cmake ../cmake \
 RUN cmake --build . -j 20 
 
 RUN cmake --install . 
-
-# Build command
-# docker build -t lammps-ml-mix:latest .
-
-# Build command for debug (with log file)
-# docker build -t lammps-ml-mix:latest . > build.log 2>&1
-
-# Build command for debug (removing cache and log file)
-# docker build --no-cache -t lammps-ml-mix:latest . > build.log 2>&1
-
-# Run command
-# docker run --rm -it --gpus all lammps-ml-mix:latest
