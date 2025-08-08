@@ -1,0 +1,8 @@
+[submodule "lammps"]
+	path = lammps
+	url = https://github.com/lammps/lammps.git
+	branch = release
+[submodule "ML-MIX"]
+	path = ML-MIX
+	url = https://github.com/kermodegroup/ML-MIX.git
+	branch = main
