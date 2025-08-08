@@ -1,0 +1,18 @@
+cat > .gitignore <<EOF
+# Build dirs
+lammps/build/
+**/CMakeCache.txt
+**/CMakeFiles/
+*.o
+*.so
+*.a
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS-specific
+.DS_Store
+Thumbs.db
+EOF
