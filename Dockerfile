@@ -53,13 +53,12 @@ RUN mkdir -p /app/lammps/build
 
 WORKDIR /app/lammps/build
 
-RUN wget -O libpace.tar.gz https://github.com/wcwitt/lammps-user-pace/archive/main.tar.gz
+RUN wge -O libpace.tar.gz https://github.com/wcwitt/lammps-user-pace/archive/main.tar.gz
 
 # Make CUDA stubs available and persist in env vars
 RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1 || true
 ENV LIBRARY_PATH=/usr/local/cuda/lib64/stubs:${LIBRARY_PATH}
 ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs:${LD_LIBRARY_PATH}
-
 
 # Configure LAMMPS with CMake.
 RUN cmake ../cmake \
@@ -85,3 +84,5 @@ RUN cmake ../cmake \
 RUN cmake --build . -j 20 
 
 RUN cmake --install . 
+
+WORKDIR /app
